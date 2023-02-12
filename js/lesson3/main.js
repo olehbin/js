@@ -157,7 +157,7 @@ let players = [
 ];
 for (let player of players) if (player.status === true)
 {
-    document.write(`<h2>${player.name} - ${player.status}</h2>`)
+    document.write(<h1>${player.name} - ${player.status}</h1>`)
 }
 
 let bobras = [
