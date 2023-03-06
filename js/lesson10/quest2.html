@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<head>
+    <title>quest2</title>
+</head>
+<body>
+<h1>Друга сторінка</h1>
+<ul id="visitsList"></ul>
+<script>
+    let visits = localStorage.getItem('visits');
+    if (visits) {
+        visits = JSON.parse(visits);
+            let visitsList = document.getElementById('visitsList');
+        for (let i = 0; i < visits.length ; i++) {
+            let li = document.createElement('li');
+            li.innerHTML = visits[i];
+            visitsList.appendChild(li);
+        }
+    }
+</script>
+</body>
+</html>

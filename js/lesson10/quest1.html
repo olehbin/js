@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<head>
+    <title>quest1</title>
+</head>
+<body>
+<h1>Перша сторінка</h1>
+<script>
+    // Отримати дату та час поточного відвідування сторінки
+    let date = new Date();
+    // Отримати всі дати та часи з попередніх відвідувань
+    let visits = localStorage.getItem('visits');
+    if (visits) {
+        visits = JSON.parse(visits);
+    } else {
+        visits = [];
+    }
+    // Додати поточне відвідування до списку
+    visits.push(date.toString());
+    // Зберегти список в локальному сховищі
+    localStorage.setItem('visits', JSON.stringify(visits));
+</script>
+<a href="quest2.html">Друга сторінка</a>
+</body>
+</html>
