@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <style>
+        body{
+            background-color: rgb(205,224,231);
+        }
+        #goCenter{
+            display: block;
+            width: 100%;
+            text-align: center;
+            border: solid black 2px;
+            background-color: #799caf;
+            color: #fca150;
+            border-radius: 8px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .userBlock {
+            margin: 10px;
+            padding: 10px;
+            border: 2px solid black;
+            width: calc(50% - 20px);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #fefae4;
+            border-radius: 5px;
+        }
+
+        .userBlock a {
+            margin-top: 10px;
+            background-color: #fca150;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<div id="users" class="container">
+    <h1 id="goCenter">Users</h1>
+</div>
+<script>
+    let url = new URL('https://jsonplaceholder.typicode.com/users');
+    fetch(url)
+        .then(value => value.json())
+        .then(users => {
+            let container = document.getElementById('users');
+            for (const user of users) {
+                let divka = document.createElement('div');
+                divka.classList.add('userBlock')
+                let ashka = document.createElement('a');
+                ashka.innerText = `${user.name} - ${user.id}`;
+                ashka.href = 'user-details.html?info=' + JSON.stringify(user);
+                divka.appendChild(document.createTextNode(`Name: ${user.name}`));
+                divka.appendChild(document.createElement('br'));
+                divka.appendChild(document.createTextNode(`Username: ${user.username}`));
+                divka.appendChild(document.createElement('br'));
+                divka.appendChild(document.createTextNode(`Email: ${user.email}`));
+                divka.appendChild(document.createElement('br'));
+                divka.appendChild(document.createTextNode(`Phone: ${user.phone}`));
+                divka.appendChild(document.createElement('br'));
+                divka.appendChild(document.createTextNode(`Website: ${user.website}`));
+                divka.appendChild(ashka);
+                container.appendChild(divka);
+            }
+        });
+</script>
+</body>
+</html>
